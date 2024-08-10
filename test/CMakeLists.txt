@@ -1,0 +1,2 @@
+add_executable(atomic_test atomic.cpp)
+target_link_libraries(atomic_test concurency)

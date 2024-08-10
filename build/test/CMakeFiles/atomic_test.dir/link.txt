@@ -1,0 +1,1 @@
+/usr/bin/clang++-15 CMakeFiles/atomic_test.dir/atomic.cpp.o -o atomic_test  ../concurency/libconcurency.a 
