@@ -1,7 +1,7 @@
 
 #include <iostream>
 
-#include <atomic.hpp>
+#include <concurency/atomic/atomic.hpp>
 
 int main()
 {

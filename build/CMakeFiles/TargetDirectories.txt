@@ -3,7 +3,6 @@
 /home/pingvinus/prog/cpp/my_concurency/build/concurency/CMakeFiles/concurency.dir
 /home/pingvinus/prog/cpp/my_concurency/build/concurency/CMakeFiles/edit_cache.dir
 /home/pingvinus/prog/cpp/my_concurency/build/concurency/CMakeFiles/rebuild_cache.dir
-/home/pingvinus/prog/cpp/my_concurency/build/example/CMakeFiles/atomic_example.dir
 /home/pingvinus/prog/cpp/my_concurency/build/example/CMakeFiles/edit_cache.dir
 /home/pingvinus/prog/cpp/my_concurency/build/example/CMakeFiles/rebuild_cache.dir
 /home/pingvinus/prog/cpp/my_concurency/build/test/CMakeFiles/atomic_test.dir

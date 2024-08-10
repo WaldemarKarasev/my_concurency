@@ -1,5 +1,6 @@
 #pragma once 
 
+#include <atomic>
 #include <condition_variable>
 #include <deque>
 #include <optional>
@@ -17,9 +18,9 @@ public:
     // Thread role: producer
     bool Put(T value)
     {
-        std::lock_guard lock(mutex);
+        std::lock_guard lock(mutex_);
 
-        if (is_stopped.load())
+        if (is_stopped_.load())
         {
             return false;
         }
@@ -33,11 +34,11 @@ public:
     // Thread role: consumer
     std::optional<T> Take()
     {
-        std::unique_lock lock(mutex);
+        std::unique_lock lock(mutex_);
         
         is_empty_.wait(lock, [this](){
-            return is_stopped.load() || !buffer_.empty();
-        })
+            return is_stopped_.load() || !buffer_.empty();
+        });
         
         if (buffer_.empty())
         {
@@ -53,7 +54,7 @@ public:
     void Close()
     {
         std::lock_guard lock(mutex_);
-        is_stopped.store(true);
+        is_stopped_.store(true);
         is_empty_.notify_all();
     }
 
@@ -62,7 +63,7 @@ private:
     std::deque<T> buffer_;
     std::mutex mutex_;
     std::condition_variable is_empty_;
-    std::atomic<bool> is_stopped{false};
+    std::atomic<bool> is_stopped_{false};
 };
 
 } // namespace concurency::tp

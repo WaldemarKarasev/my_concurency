@@ -178,6 +178,30 @@ mutex/mutex.cpp.s:
 	cd /home/pingvinus/prog/cpp/my_concurency/build && $(MAKE) $(MAKESILENT) -f concurency/CMakeFiles/concurency.dir/build.make concurency/CMakeFiles/concurency.dir/mutex/mutex.cpp.s
 .PHONY : mutex/mutex.cpp.s
 
+tread_pool/thread_pool.o: tread_pool/thread_pool.cpp.o
+.PHONY : tread_pool/thread_pool.o
+
+# target to build an object file
+tread_pool/thread_pool.cpp.o:
+	cd /home/pingvinus/prog/cpp/my_concurency/build && $(MAKE) $(MAKESILENT) -f concurency/CMakeFiles/concurency.dir/build.make concurency/CMakeFiles/concurency.dir/tread_pool/thread_pool.cpp.o
+.PHONY : tread_pool/thread_pool.cpp.o
+
+tread_pool/thread_pool.i: tread_pool/thread_pool.cpp.i
+.PHONY : tread_pool/thread_pool.i
+
+# target to preprocess a source file
+tread_pool/thread_pool.cpp.i:
+	cd /home/pingvinus/prog/cpp/my_concurency/build && $(MAKE) $(MAKESILENT) -f concurency/CMakeFiles/concurency.dir/build.make concurency/CMakeFiles/concurency.dir/tread_pool/thread_pool.cpp.i
+.PHONY : tread_pool/thread_pool.cpp.i
+
+tread_pool/thread_pool.s: tread_pool/thread_pool.cpp.s
+.PHONY : tread_pool/thread_pool.s
+
+# target to generate assembly for a file
+tread_pool/thread_pool.cpp.s:
+	cd /home/pingvinus/prog/cpp/my_concurency/build && $(MAKE) $(MAKESILENT) -f concurency/CMakeFiles/concurency.dir/build.make concurency/CMakeFiles/concurency.dir/tread_pool/thread_pool.cpp.s
+.PHONY : tread_pool/thread_pool.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -193,6 +217,9 @@ help:
 	@echo "... mutex/mutex.o"
 	@echo "... mutex/mutex.i"
 	@echo "... mutex/mutex.s"
+	@echo "... tread_pool/thread_pool.o"
+	@echo "... tread_pool/thread_pool.i"
+	@echo "... tread_pool/thread_pool.s"
 .PHONY : help
 
 

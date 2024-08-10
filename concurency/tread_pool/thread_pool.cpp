@@ -52,9 +52,9 @@ void  ThreadPool::Stop()
 // Private ThreadPool methods
 void ThreadPool::JoinWorkers()
 {
-    for (auto& worker : workers_)
+    for (size_t i = 0; i < workers_.size(); ++i)
     {
-        worker.join();
+        workers_[i].join();
     }
     workers_.clear();
 }

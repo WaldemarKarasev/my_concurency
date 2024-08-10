@@ -130,19 +130,6 @@ concurency/fast:
 .PHONY : concurency/fast
 
 #=============================================================================
-# Target rules for targets named atomic_example
-
-# Build rule for target.
-atomic_example: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 atomic_example
-.PHONY : atomic_example
-
-# fast build rule for target.
-atomic_example/fast:
-	$(MAKE) $(MAKESILENT) -f example/CMakeFiles/atomic_example.dir/build.make example/CMakeFiles/atomic_example.dir/build
-.PHONY : atomic_example/fast
-
-#=============================================================================
 # Target rules for targets named atomic_test
 
 # Build rule for target.
@@ -163,7 +150,6 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... atomic_example"
 	@echo "... atomic_test"
 	@echo "... concurency"
 .PHONY : help

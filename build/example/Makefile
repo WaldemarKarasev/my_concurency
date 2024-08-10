@@ -116,44 +116,6 @@ depend:
 	cd /home/pingvinus/prog/cpp/my_concurency/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-# Convenience name for target.
-example/CMakeFiles/atomic_example.dir/rule:
-	cd /home/pingvinus/prog/cpp/my_concurency/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 example/CMakeFiles/atomic_example.dir/rule
-.PHONY : example/CMakeFiles/atomic_example.dir/rule
-
-# Convenience name for target.
-atomic_example: example/CMakeFiles/atomic_example.dir/rule
-.PHONY : atomic_example
-
-# fast build rule for target.
-atomic_example/fast:
-	cd /home/pingvinus/prog/cpp/my_concurency/build && $(MAKE) $(MAKESILENT) -f example/CMakeFiles/atomic_example.dir/build.make example/CMakeFiles/atomic_example.dir/build
-.PHONY : atomic_example/fast
-
-atomic.o: atomic.cpp.o
-.PHONY : atomic.o
-
-# target to build an object file
-atomic.cpp.o:
-	cd /home/pingvinus/prog/cpp/my_concurency/build && $(MAKE) $(MAKESILENT) -f example/CMakeFiles/atomic_example.dir/build.make example/CMakeFiles/atomic_example.dir/atomic.cpp.o
-.PHONY : atomic.cpp.o
-
-atomic.i: atomic.cpp.i
-.PHONY : atomic.i
-
-# target to preprocess a source file
-atomic.cpp.i:
-	cd /home/pingvinus/prog/cpp/my_concurency/build && $(MAKE) $(MAKESILENT) -f example/CMakeFiles/atomic_example.dir/build.make example/CMakeFiles/atomic_example.dir/atomic.cpp.i
-.PHONY : atomic.cpp.i
-
-atomic.s: atomic.cpp.s
-.PHONY : atomic.s
-
-# target to generate assembly for a file
-atomic.cpp.s:
-	cd /home/pingvinus/prog/cpp/my_concurency/build && $(MAKE) $(MAKESILENT) -f example/CMakeFiles/atomic_example.dir/build.make example/CMakeFiles/atomic_example.dir/atomic.cpp.s
-.PHONY : atomic.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -162,10 +124,6 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... atomic_example"
-	@echo "... atomic.o"
-	@echo "... atomic.i"
-	@echo "... atomic.s"
 .PHONY : help
 
 

@@ -22,7 +22,7 @@ public:
     void Done()
     {
         assert(counter_.load() > 0);
-        std::lock_guard(mutex_);
+        std::lock_guard lock(mutex_);
         counter_.fetch_sub(1);
 
         if (counter_.load() == 0)

@@ -73,15 +73,15 @@ test/CMakeFiles/atomic_test.dir/atomic.cpp.o: test/CMakeFiles/atomic_test.dir/fl
 test/CMakeFiles/atomic_test.dir/atomic.cpp.o: /home/pingvinus/prog/cpp/my_concurency/test/atomic.cpp
 test/CMakeFiles/atomic_test.dir/atomic.cpp.o: test/CMakeFiles/atomic_test.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/pingvinus/prog/cpp/my_concurency/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object test/CMakeFiles/atomic_test.dir/atomic.cpp.o"
-	cd /home/pingvinus/prog/cpp/my_concurency/build/test && /usr/bin/clang++-15 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT test/CMakeFiles/atomic_test.dir/atomic.cpp.o -MF CMakeFiles/atomic_test.dir/atomic.cpp.o.d -o CMakeFiles/atomic_test.dir/atomic.cpp.o -c /home/pingvinus/prog/cpp/my_concurency/test/atomic.cpp
+	cd /home/pingvinus/prog/cpp/my_concurency/build/test && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT test/CMakeFiles/atomic_test.dir/atomic.cpp.o -MF CMakeFiles/atomic_test.dir/atomic.cpp.o.d -o CMakeFiles/atomic_test.dir/atomic.cpp.o -c /home/pingvinus/prog/cpp/my_concurency/test/atomic.cpp
 
 test/CMakeFiles/atomic_test.dir/atomic.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/atomic_test.dir/atomic.cpp.i"
-	cd /home/pingvinus/prog/cpp/my_concurency/build/test && /usr/bin/clang++-15 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pingvinus/prog/cpp/my_concurency/test/atomic.cpp > CMakeFiles/atomic_test.dir/atomic.cpp.i
+	cd /home/pingvinus/prog/cpp/my_concurency/build/test && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pingvinus/prog/cpp/my_concurency/test/atomic.cpp > CMakeFiles/atomic_test.dir/atomic.cpp.i
 
 test/CMakeFiles/atomic_test.dir/atomic.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/atomic_test.dir/atomic.cpp.s"
-	cd /home/pingvinus/prog/cpp/my_concurency/build/test && /usr/bin/clang++-15 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pingvinus/prog/cpp/my_concurency/test/atomic.cpp -o CMakeFiles/atomic_test.dir/atomic.cpp.s
+	cd /home/pingvinus/prog/cpp/my_concurency/build/test && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pingvinus/prog/cpp/my_concurency/test/atomic.cpp -o CMakeFiles/atomic_test.dir/atomic.cpp.s
 
 # Object files for target atomic_test
 atomic_test_OBJECTS = \

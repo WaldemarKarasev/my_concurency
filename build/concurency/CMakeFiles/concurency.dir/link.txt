@@ -1,2 +1,2 @@
-/usr/bin/llvm-ar-15 qc libconcurency.a CMakeFiles/concurency.dir/atomic/atomic.cpp.o CMakeFiles/concurency.dir/mutex/mutex.cpp.o
-/usr/bin/llvm-ranlib-15 libconcurency.a
+/usr/bin/ar qc libconcurency.a CMakeFiles/concurency.dir/atomic/atomic.cpp.o CMakeFiles/concurency.dir/mutex/mutex.cpp.o CMakeFiles/concurency.dir/tread_pool/thread_pool.cpp.o
+/usr/bin/ranlib libconcurency.a

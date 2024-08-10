@@ -99,7 +99,7 @@ concurency/clean: concurency/CMakeFiles/concurency.dir/clean
 # Directory level rules for directory example
 
 # Recursive "all" directory target.
-example/all: example/CMakeFiles/atomic_example.dir/all
+example/all:
 .PHONY : example/all
 
 # Recursive "preinstall" directory target.
@@ -107,7 +107,7 @@ example/preinstall:
 .PHONY : example/preinstall
 
 # Recursive "clean" directory target.
-example/clean: example/CMakeFiles/atomic_example.dir/clean
+example/clean:
 .PHONY : example/clean
 
 #=============================================================================
@@ -132,12 +132,12 @@ test/clean: test/CMakeFiles/atomic_test.dir/clean
 concurency/CMakeFiles/concurency.dir/all:
 	$(MAKE) $(MAKESILENT) -f concurency/CMakeFiles/concurency.dir/build.make concurency/CMakeFiles/concurency.dir/depend
 	$(MAKE) $(MAKESILENT) -f concurency/CMakeFiles/concurency.dir/build.make concurency/CMakeFiles/concurency.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/pingvinus/prog/cpp/my_concurency/build/CMakeFiles --progress-num=5,6,7 "Built target concurency"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/pingvinus/prog/cpp/my_concurency/build/CMakeFiles --progress-num=3,4,5,6 "Built target concurency"
 .PHONY : concurency/CMakeFiles/concurency.dir/all
 
 # Build rule for subdir invocation for target.
 concurency/CMakeFiles/concurency.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pingvinus/prog/cpp/my_concurency/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pingvinus/prog/cpp/my_concurency/build/CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 concurency/CMakeFiles/concurency.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/pingvinus/prog/cpp/my_concurency/build/CMakeFiles 0
 .PHONY : concurency/CMakeFiles/concurency.dir/rule
@@ -152,44 +152,18 @@ concurency/CMakeFiles/concurency.dir/clean:
 .PHONY : concurency/CMakeFiles/concurency.dir/clean
 
 #=============================================================================
-# Target rules for target example/CMakeFiles/atomic_example.dir
-
-# All Build rule for target.
-example/CMakeFiles/atomic_example.dir/all: concurency/CMakeFiles/concurency.dir/all
-	$(MAKE) $(MAKESILENT) -f example/CMakeFiles/atomic_example.dir/build.make example/CMakeFiles/atomic_example.dir/depend
-	$(MAKE) $(MAKESILENT) -f example/CMakeFiles/atomic_example.dir/build.make example/CMakeFiles/atomic_example.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/pingvinus/prog/cpp/my_concurency/build/CMakeFiles --progress-num=1,2 "Built target atomic_example"
-.PHONY : example/CMakeFiles/atomic_example.dir/all
-
-# Build rule for subdir invocation for target.
-example/CMakeFiles/atomic_example.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pingvinus/prog/cpp/my_concurency/build/CMakeFiles 5
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 example/CMakeFiles/atomic_example.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pingvinus/prog/cpp/my_concurency/build/CMakeFiles 0
-.PHONY : example/CMakeFiles/atomic_example.dir/rule
-
-# Convenience name for target.
-atomic_example: example/CMakeFiles/atomic_example.dir/rule
-.PHONY : atomic_example
-
-# clean rule for target.
-example/CMakeFiles/atomic_example.dir/clean:
-	$(MAKE) $(MAKESILENT) -f example/CMakeFiles/atomic_example.dir/build.make example/CMakeFiles/atomic_example.dir/clean
-.PHONY : example/CMakeFiles/atomic_example.dir/clean
-
-#=============================================================================
 # Target rules for target test/CMakeFiles/atomic_test.dir
 
 # All Build rule for target.
 test/CMakeFiles/atomic_test.dir/all: concurency/CMakeFiles/concurency.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/atomic_test.dir/build.make test/CMakeFiles/atomic_test.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/atomic_test.dir/build.make test/CMakeFiles/atomic_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/pingvinus/prog/cpp/my_concurency/build/CMakeFiles --progress-num=3,4 "Built target atomic_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/pingvinus/prog/cpp/my_concurency/build/CMakeFiles --progress-num=1,2 "Built target atomic_test"
 .PHONY : test/CMakeFiles/atomic_test.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/atomic_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pingvinus/prog/cpp/my_concurency/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pingvinus/prog/cpp/my_concurency/build/CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/atomic_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/pingvinus/prog/cpp/my_concurency/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/atomic_test.dir/rule
