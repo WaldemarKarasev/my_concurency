@@ -1,2 +1,2 @@
-add_executable(thread_pool_example atomic.cpp)
+add_executable(thread_pool_example thread_pool.cpp)
 target_link_libraries(thread_pool_example concurency)

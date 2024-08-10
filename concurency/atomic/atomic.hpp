@@ -5,7 +5,7 @@
 
 namespace concurency {
 
-    enum class memory_order
+    enum class memory_order : int
     {
         relaxed,
         release,

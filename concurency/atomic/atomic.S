@@ -1,12 +1,12 @@
 
 // Load
 .global atomic_load_relaxed
-.global atomic_load_aquire
+.global atomic_load_release
 .global atomic_load_setcst
 
 // Store
 .global atomic_store_relaxed
-.global atomic_store_aquire
+.global atomic_store_release
 .global atomic_store_setcst
 
 
@@ -18,29 +18,30 @@
 
 // Load
 atomic_load_relaxed:
-    ; mov 
-    rets
+    // mov 
+    ret
 
-atomic_load_aquire:
-    ; mov
+
+atomic_load_release:
+    // mov
     ret
 
 atomic_load_setcst:
-    ; mov
-    mov %rax, [rcx]
+    // mov
+    mov %rax, (%rcx)
     ret
 
 // Store
 atomic_store_relaxed:
-    ; mov
+    // mov
     ret
 
-atomic_store_aquire:
-    ; mov
+atomic_store_release:
+    // mov
     ret
 
 atomic_store_setcst:
-    ; mov
+    // mov
     ret
 
 // Exchange
