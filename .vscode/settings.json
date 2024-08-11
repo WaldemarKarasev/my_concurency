@@ -1,8 +1,0 @@
-{
-    "files.associations": {
-        "*.cpp": "cpp",
-        "optional": "cpp",
-        "shared_mutex": "cpp",
-        "__mutex_base": "cpp"
-    }
-}
