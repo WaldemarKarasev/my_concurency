@@ -2,6 +2,8 @@
 
 #include <atomic>
 
+#include <iostream>
+
 namespace concurency {
     
     atomic::Value atomic::load(memory_order mo)

@@ -1,0 +1,12 @@
+M - modified
+E - exclusive
+S - shared
+I - invalid
+
+https://en.wikipedia.org/wiki/MESI_protocols
+
+// MESI Cache Coherency Protocol
+https://www.scss.tcd.ie/Jeremy.Jones/VivioJS/caches/MESIHelp.htm
+
+// SPSCQueue
+https://github.com/rigtorp/SPSCQueue

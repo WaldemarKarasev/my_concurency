@@ -1,0 +1,56 @@
+### 101
+
+Вспомните / изучите calling conventions – [System V AMD64 ABI](https://en.wikipedia.org/wiki/X86_calling_conventions#System_V_AMD64_ABI):
+- Функции получают первые два аргумента через регистры `%rdi` и `%rsi`.
+- Возвращают результат (если он есть) через регистр `%rax`.
+
+Для справки по ассемблеру см. [Introduction to X86-64 Assembly for Compiler Writers](https://web.archive.org/web/20160714182232/https://www3.nd.edu/~dthain/courses/cse40243/fall2015/intel-intro.html)
+
+
+
+x86
+http://6.s081.scripts.mit.edu/sp18/x86-64-architecture-guide.html
+
+
+ARM (A32)
+The standard 32-bit ARM calling convention allocates the 16 general-purpose registers as:
+
+r15: Program counter (as per the instruction set specification).
+r14: Link register. The BL instruction, used in a subroutine call, stores the return address in this register.
+r13: Stack pointer. The Push/Pop instructions in "Thumb" operating mode use this register only.
+r12: Intra-Procedure-call scratch register.
+r4 to r11: Local variables.
+r0 to r3: Argument values passed to a subroutine and results returned from a subroutine.
+If the type of value returned is too large to fit in r0 to r3, or whose size cannot be determined statically at compile time, then the caller must allocate space for that value at run time, and pass a pointer to that space in r0.
+
+Subroutines must preserve the contents of r4 to r11 and the stack pointer (perhaps by saving them to the stack in the function prologue, then using them as scratch space, then restoring them from the stack in the function epilogue). In particular, subroutines that call other subroutines must save the return address in the link register r14 to the stack before calling those other subroutines. However, such subroutines do not need to return that value to r14—they merely need to load that value into r15, the program counter, to return.
+
+The ARM calling convention mandates using a full-descending stack. In addition, the stack pointer must always be 4-byte aligned, and must always be 8-byte aligned at a function call with a public interface.[3]
+
+This calling convention causes a "typical" ARM subroutine to:
+
+In the prologue, push r4 to r11 to the stack, and push the return address in r14 to the stack (this can be done with a single STM instruction);
+Copy any passed arguments (in r0 to r3) to the local scratch registers (r4 to r11);
+Allocate other local variables to the remaining local scratch registers (r4 to r11);
+Do calculations and call other subroutines as necessary using BL, assuming r0 to r3, r12 and r14 will not be preserved;
+Put the result in r0;
+In the epilogue, pull r4 to r11 from the stack, and pull the return address to the program counter r15. This can be done with a single LDM instruction.
+ARM (A64)
+The 64-bit ARM (AArch64) calling convention allocates the 31 general-purpose registers as:[4]
+
+x31 (SP): Stack pointer or a zero register, depending on context.
+x30 (LR): Procedure link register, used to return from subroutines.
+x29 (FP): Frame pointer.
+x19 to x28: Callee-saved.
+x18 (PR): Platform register. Used for some operating-system-specific special purpose, or an additional caller-saved register.
+x16 (IP0) and x17 (IP1): Intra-Procedure-call scratch registers.
+x9 to x15: Local variables, caller saved.
+x8 (XR): Indirect return value address.
+x0 to x7: Argument values passed to and results returned from a subroutine.
+All registers starting with x have a corresponding 32-bit register prefixed with w. Thus, a 32-bit x0 is called w0.
+
+Similarly, the 32 floating-point registers are allocated as:[5]
+
+v0 to v7: Argument values passed to and results returned from a subroutine.
+v8 to v15: callee-saved, but only the bottom 64 bits need to be preserved.
+v16 to v31: Local variables, caller saved.

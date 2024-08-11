@@ -1,2 +1,5 @@
-add_executable(atomic_test atomic.cpp)
+add_executable(atomic_test atomic_test.cpp)
 target_link_libraries(atomic_test concurency)
+
+add_executable(spinlock_test spinlock_test.cpp)
+target_link_libraries(spinlock_test concurency)

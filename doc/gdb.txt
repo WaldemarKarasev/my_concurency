@@ -1,0 +1,3 @@
+info registers - see registers
+
+break [filename]:[linenumber] - setting breakpoint

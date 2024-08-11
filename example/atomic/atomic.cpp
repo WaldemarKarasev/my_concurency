@@ -2,7 +2,7 @@
 #include <iostream>
 
 #include <concurency/atomic/atomic.cpp>
-
+#include <atomic>
 int main()
 {
     int init_value = 64;
@@ -11,7 +11,7 @@ int main()
     
     std::cout << "cell.load() = " << cell.load() << std::endl;
 
-    std::cout << "cell.store(5) = " << std::endl;
+    std::cout << "cell.store(5)" << std::endl;
     cell.store(5);
 
     std::cout << "cell.load() = " << cell.load() << std::endl;

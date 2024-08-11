@@ -28,7 +28,7 @@ atomic_load_release:
 
 atomic_load_setcst:
     // mov
-    mov %rax, (%rcx)
+    mov rax, [rdi] 
     ret
 
 // Store
