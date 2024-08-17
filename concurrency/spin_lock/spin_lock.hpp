@@ -6,12 +6,9 @@
 
 
 using Atomic = std::atomic<int>;
-// using Atomic = concurency::atomic;
+// using Atomic = concurrency::atomic;
 
-namespace concurency {
-
-
-
+namespace concurrency {
 
 class spin_lock
 {

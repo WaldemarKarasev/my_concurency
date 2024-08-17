@@ -1,2 +1,2 @@
 add_executable(atomic_example atomic.cpp)
-target_link_libraries(atomic_example concurency)
+target_link_libraries(atomic_example concurrency)

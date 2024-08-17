@@ -2,7 +2,7 @@
 
 #include <chrono>
 
-namespace concurency {
+namespace concurrency {
 
 class StopWatch
 {

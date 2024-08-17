@@ -4,12 +4,12 @@
 #include <chrono>
 using namespace std::chrono_literals;
 
-#include <concurency/tread_pool/thread_pool.hpp>
+#include <concurrency/tread_pool/thread_pool.hpp>
 
 
 int main()
 {
-    concurency::tp::ThreadPool pool(2);
+    concurrency::tp::ThreadPool pool(2);
 
     pool.Submit([](){
         std::this_thread::sleep_for(3s);

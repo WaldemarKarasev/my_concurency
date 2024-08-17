@@ -1,15 +1,17 @@
 #pragma once 
 
-#include "atomic_ops.hpp"
+#include "asm/atomic_ops.hpp"
 
 
-namespace concurency {
+namespace concurrency {
 
     enum class memory_order : int
     {
         relaxed,
-        release,
+        // consume, // Not implemented
         acquire,
+        release,
+        // acq_rel  // Not implemented
         seqcst
     };
 
@@ -39,7 +41,6 @@ namespace concurency {
     atomic& opetator(atomic&&) = delete;
 
     // Operations
-
     Value load(memory_order mo = memory_order::seqcst);
 
     operator Value()

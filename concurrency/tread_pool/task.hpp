@@ -2,7 +2,7 @@
 
 #include <functional>
 
-namespace concurency::tp {
+namespace concurrency::tp {
 
     using Task = std::function<void()>;
 

@@ -14,8 +14,6 @@
 .global atomic_echange_seqcst
 
 
-
-
 // Load
 atomic_load_relaxed:
     // mov 
@@ -27,8 +25,7 @@ atomic_load_release:
     ret
 
 atomic_load_setcst:
-    // mov
-    mov rax, [rdi] 
+    mov eax, 5
     ret
 
 // Store

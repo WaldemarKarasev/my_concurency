@@ -5,16 +5,19 @@
 #include <thread>
 #include <vector>
 
-// concurency
-#include <concurency/utility.hpp>
-#include <concurency/spin_lock/spin_lock.hpp>
+// Testing
+#include <gtest/gtest.h>
+
+// Concurrency
+#include <concurrency/utility.hpp>
+#include <concurrency/spin_lock/spin_lock.hpp>
 
 void Stress()
 {
-    concurency::spin_lock spinlock;
+    concurrency::spin_lock spinlock;
     size_t counter = 0;
 
-    concurency::StopWatch stop_watch;
+    concurrency::StopWatch stop_watch;
 
     std::vector<std::thread> threads;
     // for (size_t i = 0; i < std::thread::hardware_concurrency(); ++i)
@@ -44,10 +47,34 @@ void Stress()
     std::cout << "Elapsed: " << elapsed_ms << "ms" << std::endl;     
 }
 
-int main()
-{
-    while (true)
+TEST(SpinLock, LockUnlock) {
+    concurrency::spin_lock spinlock;
+
+    spinlock.lock();
+    spinlock.unlock();  
+}
+
+TEST(SpinLock, SequentialLockUnlock) {
+    concurrency::spin_lock  spinlock;
+
+    spinlock.lock();
+    spinlock.unlock();
+
+    spinlock.lock();
+    spinlock.unlock();   
+}
+
+TEST(SpinLock, Stress) {
+    int steps = 10;
+    while (steps > 0)
     {
         Stress();
+        steps--;
     }
+}
+
+int main(int argc, char *argv[])
+{
+    testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }

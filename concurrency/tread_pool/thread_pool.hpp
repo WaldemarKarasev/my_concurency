@@ -7,7 +7,7 @@
 #include "queue.hpp"
 #include "wait_group.hpp"
 
-namespace concurency::tp {
+namespace concurrency::tp {
 
 class ThreadPool 
 {
@@ -50,4 +50,4 @@ private:
     WaitGroup wg_;
 };
 
-} // namespace concurency::tp
+} // namespace concurrency::tp

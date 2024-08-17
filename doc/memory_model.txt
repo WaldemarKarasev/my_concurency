@@ -1,0 +1,20 @@
+Memory Model - declarative model
+
+Modification_Order  - ...
+
+Happens-Before      - ...
+|   Synchronizes_With   - ...
+|   Program-Order       - ...
+
+Happens-Before == Synchronizes_With <-> Program-Order - транзитивное замыкание 
+
+Synchronuzation-Order   - ...
+
+
+Read
+1. Memory Bariers
+2. Russ Cox
+3. Java MM
+4. Linux kerner MM
+5. The Problem of Programming Languages Concurrency Semantics
+6. C++ MM // consume ??? bad MM

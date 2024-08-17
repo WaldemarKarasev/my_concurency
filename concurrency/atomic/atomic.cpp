@@ -4,7 +4,7 @@
 
 #include <iostream>
 
-namespace concurency {
+namespace concurrency {
     
     atomic::Value atomic::load(memory_order mo)
     {
@@ -48,6 +48,13 @@ namespace concurency {
 
     atomic::Value atomic::exchange(Value new_value, memory_order mo)
     {
-        return atomic_echange_seqcst(&cell_, new_value);
+        switch (mo)
+        {
+        case memory_order::seqcst:
+            return atomic_echange_seqcst(&cell_, new_value);
+        default:
+            // UB
+            break;
+        }
     }
 }

@@ -7,8 +7,11 @@
 #include <condition_variable>
 #include <mutex>
 
-namespace concurency::tp {
+namespace concurrency::tp {
 
+
+// mutex + condvar -> simple
+// atomic + futex_wait (barrier) -> harder 
 class WaitGroup
 {
 public:
@@ -44,8 +47,6 @@ private:
     std::atomic<size_t> counter_{0};
     std::mutex mutex_;
     std::condition_variable wait_zero_;
-
-
 };
 
 }

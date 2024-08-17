@@ -6,7 +6,7 @@
 #include <optional>
 #include <mutex>
 
-namespace concurency::tp {
+namespace concurrency::tp {
 
 // Unbounded Mutli-Producer / Multi-Consumer (MPMC) Blocking Queue
 
@@ -66,4 +66,4 @@ private:
     std::atomic<bool> is_stopped_{false};
 };
 
-} // namespace concurency::tp
+} // namespace concurrency::tp

@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-namespace concurency::tp {
+namespace concurrency::tp {
 
 static thread_local ThreadPool* pool = nullptr;
 
@@ -79,7 +79,7 @@ void ThreadPool::StartWorkerThreads()
 void ThreadPool::WorkerRoutine(std::optional<Task> task)
 {
     try {
-
+        task->operator()();
     } catch (std::exception& e) {
         std::cout << "Exception occured: " << e.what() << std::endl;
     } catch (...) {
