@@ -51,8 +51,8 @@ TEST(Thread_Pool, MultiWait) {
         bool done = false;
 
         pool.Submit([&]() {
-        std::this_thread::sleep_for(1s);
-        done = true;
+            std::this_thread::sleep_for(1s);
+            done = true;
         });
 
         pool.WaitIdle();

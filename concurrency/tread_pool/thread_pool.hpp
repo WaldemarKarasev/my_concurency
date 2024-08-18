@@ -47,7 +47,8 @@ private:
     size_t workers_count_{0};
     std::vector<std::thread> workers_;
     UnboundedBlockingMPMCQueue<Task> tasks_;
-    WaitGroup wg_;
+    // WaitGroup wg_;
+    WaitGroup_Futex wg_;
 };
 
 } // namespace concurrency::tp
