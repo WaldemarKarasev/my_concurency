@@ -65,10 +65,10 @@ public:
     void Done()
     {
         // std::cout << "Done" << std::endl;
-        assert(counter_.load(std::memory_order_seq_cst) > 0);
-        counter_.fetch_sub(1, std::memory_order_seq_cst);
+        assert(counter_.load() > 0);
+        counter_.fetch_sub(1);
 
-        if (counter_.load(std::memory_order_seq_cst) == 0)
+        if (counter_.load(std::memory_order_release) == 0)
         {
             auto key = concurrency::wait::system::PrepareWake(barrier);
             barrier.store(1);
