@@ -6,6 +6,7 @@
 #include <optional>
 #include <mutex>
 
+
 namespace concurrency::tp {
 
 // Unbounded Mutli-Producer / Multi-Consumer (MPMC) Blocking Queue
@@ -19,15 +20,12 @@ public:
     bool Put(T value)
     {
         std::lock_guard lock(mutex_);
-
         if (is_stopped_.load())
         {
             return false;
         }
-
         buffer_.push_back(std::move(value));
         is_empty_.notify_one();
-        
         return true;
     }
 

@@ -70,16 +70,16 @@ void ThreadPool::StartWorkerThreads()
             {
                 WorkerRoutine(std::move(task));
                 wg_.Done();
-                tasks_.Take();
+                task = tasks_.Take();
             }
         }));
     }
 }
-
+#include <iostream>
 void ThreadPool::WorkerRoutine(std::optional<Task> task)
 {
     try {
-        task->operator()();
+        (*task)();
     } catch (std::exception& e) {
         std::cout << "Exception occured: " << e.what() << std::endl;
     } catch (...) {

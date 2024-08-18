@@ -8,7 +8,7 @@
 #include <concurrency/atomic/atomic.hpp>
 
 
-namespace concurrency::wait::futex {
+namespace concurrency::wait::system {
 
 // using Atomic = std::atomic<uint32_t>;
 // using MemoryOrder = std::memory_order;
@@ -16,6 +16,8 @@ namespace concurrency::wait::futex {
 struct WakeKey {
     uint32_t* addr;
 };
+
+WakeKey PrepareWake(std::atomic<uint32_t>& atomic);
 
 // Wait
 void Wait(std::atomic<uint32_t>& atomic, uint32_t old,

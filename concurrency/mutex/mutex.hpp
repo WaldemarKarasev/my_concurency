@@ -5,10 +5,18 @@
 
 #include <concurrency/wait/system/wait.hpp>
 
+#include <mutex>
+
 namespace concurrency {
 
 class mutex
 {
+    enum State : uint32_t
+    {
+        Free = 0,
+        Locked
+    };
+
 public:
     using atomic_type = std::atomic<uint32_t>;
 
@@ -26,16 +34,22 @@ public:
 
     void lock()
     {
-
+        while (phase_.exchange(State::Locked) == State::Locked)
+        {
+            wait::system::Wait(phase_, State::Locked);
+        }
     }
 
     void unlock()
     {
-
+        wait::system::WakeKey key = wait::system::PrepareWake(phase_);
+        phase_.store(State::Free);
+        wait::system::WakeOne(key);
     }
 
 private:
-    atomic_type phase_{0};
+    atomic_type phase_{State::Free};
+    std::mutex mutex_;
 };
 
 }

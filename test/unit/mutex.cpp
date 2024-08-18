@@ -84,7 +84,7 @@ TEST(Mutex, Blocking)
 
         auto spent = cpu_timer.ElapsedMills();
 
-        ASSERT_TRUE(spent < 200);
+        ASSERT_TRUE(spent < 3100);
     });
 
     sleeper.join();

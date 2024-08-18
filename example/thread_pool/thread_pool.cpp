@@ -9,24 +9,24 @@ using namespace std::chrono_literals;
 
 int main()
 {
-    concurrency::tp::ThreadPool pool(2);
+    concurrency::tp::ThreadPool pool{std::thread::hardware_concurrency()};
 
-    pool.Submit([](){
-        std::this_thread::sleep_for(3s);
-        std::cout << "1st" << std::endl;
-    });
+    pool.Start();
 
+    std::atomic<int> shared_counter{0};
+    std::atomic<int> tasks{0};
 
-    pool.Submit([](){
-        std::cout << "2nd" << std::endl;
-    });
+    for (size_t i = 0; i < 100500; ++i) {
+        pool.Submit([&]() {
+        int old = shared_counter.load();
+        shared_counter.store(old + 1);
 
-
-    pool.Submit([](){
-        std::cout << "3rd" << std::endl;
-    });
+        ++tasks;
+        });
+    }
 
     pool.WaitIdle();
-
     pool.Stop();
+
+    std::cout << "Racy counter value: " << shared_counter << std::endl;
 }

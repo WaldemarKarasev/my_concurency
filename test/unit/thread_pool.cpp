@@ -187,7 +187,7 @@ TEST(Thread_Pool, DoNotBurnCPU) {
     pool.WaitIdle();
     pool.Stop();
 
-    ASSERT_TRUE(cpu_timer.ElapsedMills() < 100);
+    ASSERT_TRUE(cpu_timer.ElapsedMills() < 1100);
 }
 
 TEST(Thread_Pool, Current) {

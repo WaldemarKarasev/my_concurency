@@ -56,5 +56,8 @@ namespace concurrency {
             // UB
             break;
         }
+
+        return {}; // for compiler
     }
+    
 }

@@ -5,7 +5,7 @@
 #include <climits>
 
 
-namespace concurrency::wait::futex::detail {
+namespace concurrency::wait::system::futex {
 
 // Wrappers for platform-specific system calls (futex, ulock, WaitOnAddress)
 
