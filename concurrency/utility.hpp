@@ -23,7 +23,19 @@ public:
 
 private:
     std::chrono::steady_clock::time_point start_time_;    
-
 };
+
+
+inline void print()
+{
+    std::cout << std::endl;
+}
+
+template <typename Head, typename... Tail>
+inline void print(const Head& head, const Tail&... tail)
+{
+    std::cout << head << " ";
+    print(tail...);
+}
 
 }

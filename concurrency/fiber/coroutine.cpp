@@ -21,6 +21,12 @@ void Coroutine::Resume()
     caller_context_.SwitchTo(coro_context_);   
 
     current = prev;
+
+    if (coro_exception_)
+    {
+        std::rethrow_exception(coro_exception_);
+    }
+
 }
 
 // Suspend running coroutine
@@ -43,11 +49,9 @@ void Coroutine::Run() noexcept
 {
     try {
         fun_();
-    } catch (std::exception& e)
-    {
-        std::cout << e.what() << std::endl;
     } catch (...)
     {
+        coro_exception_ = std::current_exception();
         std::cout << "Unknown exception" << std::endl;
     }
 

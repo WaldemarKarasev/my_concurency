@@ -1,7 +1,9 @@
 #pragma once
 
 // STL
+#include <exception>
 #include <functional>
+
 
 // concurrency
 #include <concurrency/stack/stack.hpp>
@@ -36,6 +38,7 @@ private:
 
     // completion flag
     bool is_completed_{false};
+    std::exception_ptr coro_exception_;
 
 };
 

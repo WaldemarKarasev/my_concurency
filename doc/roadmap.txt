@@ -38,7 +38,7 @@ queue of tasks:
     - [tasks/executors](/tasks/tasks/executors)
     - [tasks/scheduler](/tasks/fibers/scheduler)
 
-- coroutine
+- coroutine - done
 
 - mutex
     - [fibers/yield](/tasks/fibers/coroutine)
