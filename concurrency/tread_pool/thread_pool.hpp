@@ -3,7 +3,7 @@
 #include <vector>
 #include <thread>
 
-#include "task.hpp"
+#include <concurrency/task/task.hpp>
 #include "queue.hpp"
 #include "wait_group.hpp"
 
@@ -27,7 +27,11 @@ public:
     void Start();
 
     // Schedules task for execution in one of the worker threads
+    void Submit(ITask* task);
+
+    // Schedules task for execution in one of the worker threads
     void Submit(Task task);
+
 
     // Locates current thread pool from worker thread
     static ThreadPool* Current();
@@ -41,12 +45,12 @@ public:
 private:
     void JoinWorkers();
     void StartWorkerThreads();
-    void WorkerRoutine(std::optional<Task> task);
+    void WorkerRoutine(std::optional<ITask*> task);
 
 private:
     size_t workers_count_{0};
     std::vector<std::thread> workers_;
-    UnboundedBlockingMPMCQueue<Task> tasks_;
+    UnboundedBlockingMPMCQueue<ITask*> tasks_;
     // WaitGroup wg_;
     WaitGroup_Futex wg_;
 };

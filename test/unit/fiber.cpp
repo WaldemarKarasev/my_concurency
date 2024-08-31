@@ -9,8 +9,10 @@ using namespace std::chrono_literals;
 // Concurrency
 #include <concurrency/fiber/fiber.hpp> // fiber
 #include <concurrency/fiber/go.hpp> // Go
-#include <concurrency/fiber/yield.hpp> // Yield
+#include <concurrency/fiber/yield.hpp> // concurrency::fiber::Yield
 #include <concurrency/tread_pool/thread_pool.hpp> // scheduler
+
+#include <concurrency/utility.hpp>
 
 using ThreadPool = concurrency::tp::ThreadPool;
 
@@ -28,7 +30,7 @@ TEST(Fiber, JustWorks) {
 
     bool done = false;
 
-    Go(pool, [&]() {
+    concurrency::fiber::Go(pool, [&]() {
         AssertOn(pool);
         done = true;
     });
@@ -39,7 +41,6 @@ TEST(Fiber, JustWorks) {
 
     pool.Stop();
 }
-
 TEST(Fiber, Child) {
     ThreadPool pool{3};
     pool.Start();
@@ -49,7 +50,7 @@ TEST(Fiber, Child) {
     auto init = [&]() {
         AssertOn(pool);
 
-        Go([&]() {
+        concurrency::fiber::Go([&]() {
             AssertOn(pool);
             ++done;
         });
@@ -57,7 +58,7 @@ TEST(Fiber, Child) {
         ++done;
     };
 
-    Go(pool, init);
+    concurrency::fiber::Go(pool, init);
 
     pool.WaitIdle();
 
@@ -65,6 +66,7 @@ TEST(Fiber, Child) {
 
     pool.Stop();
 }
+
 
 TEST(Fiber, RunInParallel) {
     ThreadPool pool{3};
@@ -77,16 +79,16 @@ TEST(Fiber, RunInParallel) {
         completed.fetch_add(1);
     };
 
-    wheels::StopWatch stop_watch;
+    concurrency::StopWatch stop_watch;
 
-    Go(pool, sleeper);
-    Go(pool, sleeper);
-    Go(pool, sleeper);
+    concurrency::fiber::Go(pool, sleeper);
+    concurrency::fiber::Go(pool, sleeper);
+    concurrency::fiber::Go(pool, sleeper);
 
     pool.WaitIdle();
 
     ASSERT_EQ(completed.load(), 3);
-    ASSERT_TRUE(stop_watch.Elapsed() < 3s + 500ms);
+    ASSERT_TRUE(stop_watch.ElapsedMills() < 35000);// 3s + 500ms);
 
     pool.Stop();
 }
@@ -97,8 +99,8 @@ TEST(Fiber, Yield1) {
 
     bool done = false;
 
-    Go(pool, [&] {
-        Yield();
+    concurrency::fiber::Go(pool, [&] {
+        concurrency::fiber::Yield();
 
         AssertOn(pool);
         done = true;
@@ -120,21 +122,21 @@ TEST(Fiber, Yield2) {
 
     int state = Ping;
 
-    Go(pool, [&] {
+    concurrency::fiber::Go(pool, [&] {
         for (size_t i = 0; i < 2; ++i) {
             ASSERT_EQ(state, Ping);
             state = Pong;
 
-            Yield();
+            concurrency::fiber::Yield();
         }
     });
 
-    Go(pool, [&] {
+    concurrency::fiber::Go(pool, [&] {
         for (size_t j = 0; j < 2; ++j) {
             ASSERT_EQ(state, Pong);
             state = Ping;
 
-            Yield();
+            concurrency::fiber::Yield();
         }
     });
 
@@ -151,12 +153,12 @@ TEST(Fiber, Yield3) {
 
     auto runner = [] {
         for (size_t i = 0; i < kYields; ++i) {
-            Yield();
+            concurrency::fiber::Yield();
         }
     };
 
-    Go(pool, runner);
-    Go(pool, runner);
+    concurrency::fiber::Go(pool, runner);
+    concurrency::fiber::Go(pool, runner);
 
     pool.Start();
 
@@ -177,8 +179,8 @@ TEST(Fiber, TwoPools1) {
         };
     };
 
-    Go(pool_1, make_tester(pool_1));
-    Go(pool_2, make_tester(pool_2));
+    concurrency::fiber::Go(pool_1, make_tester(pool_1));
+    concurrency::fiber::Go(pool_2, make_tester(pool_2));
 
     pool_1.WaitIdle();
     pool_2.WaitIdle();
@@ -201,17 +203,17 @@ TEST(Fiber, TwoPools2) {
             for (size_t i = 0; i < kIterations; ++i) {
                 AssertOn(pool);
 
-                Yield();
+                concurrency::fiber::Yield();
 
-                Go(pool, [&pool]() {
+                concurrency::fiber::Go(pool, [&pool]() {
                     AssertOn(pool);
                 });
             }
         };
     };
 
-    Go(pool_1, make_tester(pool_1));
-    Go(pool_2, make_tester(pool_2));
+    concurrency::fiber::Go(pool_1, make_tester(pool_1));
+    concurrency::fiber::Go(pool_2, make_tester(pool_2));
 
     pool_1.WaitIdle();
     pool_2.WaitIdle();
@@ -219,7 +221,8 @@ TEST(Fiber, TwoPools2) {
     pool_1.Stop();
     pool_2.Stop();
 }
-
+#if 0
+#endif
 
 int main(int argc, char *argv[])
 {

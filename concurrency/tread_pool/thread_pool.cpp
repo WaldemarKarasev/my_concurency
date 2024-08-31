@@ -23,10 +23,17 @@ void ThreadPool::Start()
 }
 
 // Schedules task for execution in one of the worker threads
+void ThreadPool::Submit(ITask* task)
+{
+    wg_.Add(1);
+    tasks_.Put(task);
+}
+
 void ThreadPool::Submit(Task task)
 {
     wg_.Add(1);
-    tasks_.Put(std::move(task));
+    tasks_.Put(Routine::MakeRoutine(std::move(task)));
+
 }
 
 // Locates current thread pool from worker thread
@@ -68,7 +75,7 @@ void ThreadPool::StartWorkerThreads()
             auto task = tasks_.Take();
             while(task)
             {
-                WorkerRoutine(std::move(task));
+                WorkerRoutine(task);
                 wg_.Done();
                 task = tasks_.Take();
             }
@@ -76,10 +83,10 @@ void ThreadPool::StartWorkerThreads()
     }
 }
 #include <iostream>
-void ThreadPool::WorkerRoutine(std::optional<Task> task)
+void ThreadPool::WorkerRoutine(std::optional<ITask*> task)
 {
     try {
-        (*task)();
+        (*task)->Run();
     } catch (std::exception& e) {
         std::cout << "Exception occured: " << e.what() << std::endl;
     } catch (...) {

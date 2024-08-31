@@ -10,7 +10,6 @@ Coroutine::Coroutine(std::function<void()> routine)
     : stack_(concurrency::stack::MmapStack::AllocateBytes(64 * 1024))
 {
     fun_ = std::move(routine);
-    // stack_.AllocateBytes(/*at_least*/64 * 1024);
     coro_context_.Setup(stack_.MutView(), this);
 }
 

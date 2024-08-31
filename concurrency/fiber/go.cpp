@@ -3,13 +3,21 @@
 namespace concurrency::fiber {
 
 
-void Go(Routine task)
+static Fiber* CreateFiber(Scheduler& pool, Task task)
 {
-    Scheduler::Current()->Submit(std::move(task));
+    Fiber* fiber = new Fiber(&pool, std::move(task));
+    return fiber;
 }
-void Go(Scheduler& pool, Routine task)
+
+void Go(Task task)
 {
-    pool.Submit(std::move(task));
+    Scheduler& pool = *Scheduler::Current();
+    Go(pool, std::move(task));
+}
+void Go(Scheduler& pool, Task task)
+{
+    auto* fiber = CreateFiber(pool, std::move(task));
+    pool.Submit(fiber);
 }
 
 } // concurrency::fiber
