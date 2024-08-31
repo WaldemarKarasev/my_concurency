@@ -1,5 +1,5 @@
 queue of tasks:
-0:  coroutines -> fibers/yield -> sleep_for or tasks/executors -> futures -> ...
+0:  sleep_for or tasks/executors -> futures -> ...
 1:  condvar -> semaphore -> barrier -> ...
 2:  wait_group(moving to the separate folder)
 3:  intrusiveness
@@ -41,7 +41,7 @@ queue of tasks:
 - coroutine - done
 
 - mutex
-    - [fibers/yield](/tasks/fibers/coroutine)
+    - [fibers/yield](/tasks/fibers/coroutine    - done)
     - [fibers/sleep_for](/tasks/fibers/sleep_for)
     - [cond/condvar](/tasks/cond/condvar)
     - [cond/wait_group](/tasks/cond/wait_group - done)
@@ -49,11 +49,11 @@ queue of tasks:
     - [tasks/executors](/tasks/tasks/executors) + интрузивность – рекомендуется
 
 - sleep_for
-    - [fibers/yield](/tasks/fibers/yield)
+    - [fibers/yield](/tasks/fibers/yield    - done)
 
-- yield
+- yield - done
     - [tasks/thread-pool](/tasks/tasks/thread-pool  - done)
-    - [fibers/coro](/tasks/fibers/coro)
+    - [fibers/coro](/tasks/fibers/coro              - done)
 
 ==================================================================
 
@@ -78,7 +78,7 @@ queue of tasks:
 =============================task=================================
 - executors
     - [tasks/thread-pool](/tasks/tasks/thread-pool - done)
-    - [fibers/yield](/tasks/fibers/yield)
+    - [fibers/yield](/tasks/fibers/yield           - done)
 
 
 - scheduler
