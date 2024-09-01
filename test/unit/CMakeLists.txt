@@ -60,6 +60,14 @@ target_link_libraries(fiber
         gtest
 )
 
+add_executable(stdlike_future stdlike_future.cpp)
+target_link_libraries(stdlike_future
+        # ${TEST_LIBS}
+        concurrency
+        #   GTest::gtest_main
+        gtest
+)
+
 gtest_discover_tests(atomic)
 gtest_discover_tests(spinlock)
 gtest_discover_tests(mutex)
@@ -67,3 +75,4 @@ gtest_discover_tests(MPMCQueue)
 gtest_discover_tests(thread_pool)
 gtest_discover_tests(coroutine)
 gtest_discover_tests(fiber)
+gtest_discover_tests(stdlike_future)

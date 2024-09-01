@@ -5,7 +5,11 @@ namespace concurrency::fiber {
 
 void Yield()
 {
-    Fiber::Self()->Schedule();
+    Fiber* fiber = Fiber::Self();
+    if (Fiber::Self() != nullptr)
+    {
+        fiber->Suspend();
+    }
 }
 
 } // namespace concurrency::fiber

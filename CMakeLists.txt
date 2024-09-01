@@ -12,6 +12,15 @@ include(cmake/sanitize.cmake)
 
 add_subdirectory(concurrency)
 
+
+find_package(Boost COMPONENTS  context)
+if(Boost_FOUND)
+  include_directories(${Boost_INCLUDE_DIRS})
+  message(${Boost_INCLUDE_DIRS})
+  message(${Boost_LIBRARIES})
+endif()
+
+
 add_subdirectory(example)
 
 

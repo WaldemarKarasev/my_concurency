@@ -1,13 +1,12 @@
 #pragma once
 
-#include <concurrency/tread_pool/thread_pool.hpp>
+#include <concurrency/tread_pool/scheduler.hpp>
 #include <concurrency/task/task.hpp>
 #include <concurrency/fiber/coroutine.hpp>
 
 namespace concurrency::fiber {
 
-using Scheduler = concurrency::tp::ThreadPool;
-
+using Scheduler = concurrency::tp::Scheduler;
 
 class Fiber : public concurrency::ITask {
 public:
@@ -15,6 +14,9 @@ public:
     Fiber(Scheduler* executor, Task task);
 
     void Schedule();
+
+    void Resume();
+    void Suspend();
 
     // ITask
     virtual void Run() noexcept override;

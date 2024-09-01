@@ -18,15 +18,23 @@ Fiber::Fiber(Scheduler* executor, Task task)
 
 void Fiber::Schedule()
 {
-    if (is_running_)
+    scheduler_->Submit(this);
+}
+
+void Fiber::Resume()
+{
+    if (coro_.IsCompleted())
     {
-        is_running_ = false;
-        Coroutine::Suspend();
+        delete this;
+        return;
     }
-    else
-    {
-        scheduler_->Submit(this);
-    }
+
+    coro_.Resume();
+}
+
+void Fiber::Suspend()
+{
+    Coroutine::Suspend();
 }
 
 // Task
@@ -36,7 +44,6 @@ void Fiber::Run() noexcept
     current_fiber = this;
 
     bool terminated = false;
-    is_running_ = true;
     try {
         coro_.Resume();
     } catch (std::exception& e) {
@@ -44,15 +51,13 @@ void Fiber::Run() noexcept
     } catch (...) {
         terminated = true;
     }
-    is_running_ = false;
     if (coro_.IsCompleted() || terminated) 
     {
         delete this;
+        return;
     }
-    else
-    {
-        Schedule();
-    }
+    
+    Schedule();
 }
 
 Fiber* Fiber::Self()
