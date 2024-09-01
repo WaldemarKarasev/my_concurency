@@ -1,22 +1,23 @@
 #pragma once
 
-#include <concurrency/tread_pool/scheduler.hpp>
+#include <concurrency/exe/executor.hpp>
 #include <concurrency/task/task.hpp>
 #include <concurrency/fiber/coroutine.hpp>
 
 namespace concurrency::fiber {
 
-using Scheduler = concurrency::tp::Scheduler;
 
 class Fiber : public concurrency::ITask {
 public:
 
-    Fiber(Scheduler* executor, Task task);
+    Fiber(exe::IExecutor* executor, Task task);
 
     void Schedule();
 
     void Resume();
     void Suspend();
+
+    exe::IExecutor& GetExecutor() const { return *executor_; }
 
     // ITask
     virtual void Run() noexcept override;
@@ -25,7 +26,7 @@ public:
 
 private:
     Coroutine coro_;
-    Scheduler* scheduler_{nullptr};
+    exe::IExecutor* executor_{nullptr};
     bool is_running_{false};
 };
 

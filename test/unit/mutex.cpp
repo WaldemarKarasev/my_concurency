@@ -7,7 +7,7 @@ using namespace std::chrono_literals;
 #include <gtest/gtest.h>
 
 // Concurrency
-#include <concurrency/mutex/mutex.hpp>
+#include <concurrency/sync/mutex.hpp>
 #include <concurrency/utility.hpp>
 
 TEST(Mutex, LockUnlock)

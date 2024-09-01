@@ -60,4 +60,4 @@ namespace concurrency {
         return {}; // for compiler
     }
     
-}
+} // namespace concurrency

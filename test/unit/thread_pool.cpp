@@ -8,11 +8,13 @@ using namespace std::chrono_literals;
 #include <gtest/gtest.h>
 
 // Concurrency
-#include <concurrency/tread_pool/thread_pool.hpp>
 #include <concurrency/utility.hpp>
+#include <concurrency/exe/thread_pool.hpp>
+
+using ThreadPool = concurrency::exe::ThreadPool;
 
 TEST(Thread_Pool, JustWorks) {
-    concurrency::tp::ThreadPool pool{4};
+    ThreadPool pool{4};
 
     pool.Start();
 
@@ -25,7 +27,7 @@ TEST(Thread_Pool, JustWorks) {
 }
 
 TEST(Thread_Pool, Wait) {
-    concurrency::tp::ThreadPool pool{4};
+    ThreadPool pool{4};
 
     pool.Start();
 
@@ -43,7 +45,7 @@ TEST(Thread_Pool, Wait) {
 }
 
 TEST(Thread_Pool, MultiWait) {
-    concurrency::tp::ThreadPool pool{1};
+    ThreadPool pool{1};
 
     pool.Start();
 
@@ -64,7 +66,7 @@ TEST(Thread_Pool, MultiWait) {
 }
 
 TEST(Thread_Pool, Exceptions) {
-    concurrency::tp::ThreadPool pool{1};
+    ThreadPool pool{1};
 
     pool.Start();
 
@@ -77,7 +79,7 @@ TEST(Thread_Pool, Exceptions) {
 }
 
 TEST(Thread_Pool, ManyTasks) {
-    concurrency::tp::ThreadPool pool{4};
+    ThreadPool pool{4};
 
     pool.Start();
 
@@ -98,7 +100,7 @@ TEST(Thread_Pool, ManyTasks) {
 }
 
 TEST(Thread_Pool, Parallel) {
-    concurrency::tp::ThreadPool pool{4};
+    ThreadPool pool{4};
 
     pool.Start();
 
@@ -124,8 +126,8 @@ TEST(Thread_Pool, Parallel) {
 }
 
 TEST(Thread_Pool, TwoPools) {
-    concurrency::tp::ThreadPool pool1{1};
-    concurrency::tp::ThreadPool pool2{1};
+    ThreadPool pool1{1};
+    ThreadPool pool2{1};
 
     pool1.Start();
     pool2.Start();
@@ -155,7 +157,7 @@ TEST(Thread_Pool, TwoPools) {
 }
 
 TEST(Thread_Pool, Stop) {
-    concurrency::tp::ThreadPool pool{1};
+    ThreadPool pool{1};
 
     pool.Start();
 
@@ -169,7 +171,7 @@ TEST(Thread_Pool, Stop) {
 }
 
 TEST(Thread_Pool, DoNotBurnCPU) {
-    concurrency::tp::ThreadPool pool{4};
+    ThreadPool pool{4};
 
     pool.Start();
 
@@ -191,14 +193,14 @@ TEST(Thread_Pool, DoNotBurnCPU) {
 }
 
 TEST(Thread_Pool, Current) {
-    concurrency::tp::ThreadPool pool{1};
+    ThreadPool pool{1};
 
     pool.Start();
 
-    ASSERT_EQ(concurrency::tp::ThreadPool::Current(), nullptr);
+    ASSERT_EQ(ThreadPool::Current(), nullptr);
 
     pool.Submit([&]() {
-        ASSERT_EQ(concurrency::tp::ThreadPool::Current(), &pool);
+        ASSERT_EQ(ThreadPool::Current(), &pool);
     });
 
     pool.WaitIdle();
@@ -206,7 +208,7 @@ TEST(Thread_Pool, Current) {
 }
 
 TEST(Thread_Pool, SubmitAfterWaitIdle) {
-    concurrency::tp::ThreadPool pool{4};
+    ThreadPool pool{4};
 
     pool.Start();
 
@@ -215,7 +217,7 @@ TEST(Thread_Pool, SubmitAfterWaitIdle) {
     pool.Submit([&]() {
         std::this_thread::sleep_for(500ms);
 
-        concurrency::tp::ThreadPool::Current()->Submit([&]() {
+        ThreadPool::Current()->Submit([&]() {
         std::this_thread::sleep_for(500ms);
         done = true;
         });
@@ -229,7 +231,7 @@ TEST(Thread_Pool, SubmitAfterWaitIdle) {
 
 // TEST(UseThreads, wheels::test::TestOptions().TimeLimit(1s)) {
 TEST(Thread_Pool, UseThreads) {
-    concurrency::tp::ThreadPool pool{4};
+    ThreadPool pool{4};
 
     pool.Start();
 
@@ -249,7 +251,7 @@ TEST(Thread_Pool, UseThreads) {
 }
 
 TEST(Thread_Pool, Racy) {
-    concurrency::tp::ThreadPool pool{4};
+    ThreadPool pool{4};
 
     pool.Start();
 

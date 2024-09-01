@@ -4,12 +4,14 @@
 #include <chrono>
 using namespace std::chrono_literals;
 
-#include <concurrency/tread_pool/thread_pool.hpp>
+// concurrency
+#include <concurrency/exe/thread_pool.hpp>
 
+using ThreadPool = concurrency::exe::ThreadPool;
 
 int main()
 {
-    concurrency::tp::ThreadPool pool{std::thread::hardware_concurrency()};
+    ThreadPool pool{std::thread::hardware_concurrency()};
 
     pool.Start();
 

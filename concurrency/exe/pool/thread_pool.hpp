@@ -4,12 +4,13 @@
 #include <thread>
 
 #include <concurrency/task/task.hpp>
-#include "queue.hpp"
-#include "wait_group.hpp"
+#include <concurrency/exe/pool/queues/UnboundedBlockingMPMCQueue.hpp>
+#include <concurrency/sync/wait_group.hpp>
+#include <concurrency/exe/executor.hpp>
 
-namespace concurrency::tp {
+namespace concurrency::exe::pool {
 
-class ThreadPool 
+class ThreadPool : public exe::IExecutor
 {
 public:
     explicit ThreadPool(size_t threads);
@@ -27,9 +28,9 @@ public:
     void Start();
 
     // Schedules task for execution in one of the worker threads
-    void Submit(ITask* task);
+    virtual void Submit(ITask* task) override;
 
-    // Schedules task for execution in one of the worker threads
+    // This function is not part of IExecutor interface. But it can be used for scheduling simple lambdas in current ThreadPool
     void Submit(Task task);
 
 
@@ -50,9 +51,9 @@ private:
 private:
     size_t workers_count_{0};
     std::vector<std::thread> workers_;
-    UnboundedBlockingMPMCQueue<ITask*> tasks_;
+    queues::UnboundedBlockingMPMCQueue<ITask*> tasks_;
     // WaitGroup wg_;
     WaitGroup_Futex wg_;
 };
 
-} // namespace concurrency::tp
+} // namespace concurrency::exe::pool

@@ -1,8 +1,7 @@
 #pragma once 
 
 #include <atomic>
-#include "../atomic/atomic.hpp"
-
+#include <concurrency/sync/atomic/atomic.hpp>
 
 
 using Atomic = std::atomic<int>;
@@ -43,4 +42,4 @@ private:
     std::atomic<int> locked_{0};
 };
 
-}
+} // namespace concurrency

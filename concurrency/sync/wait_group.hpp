@@ -10,7 +10,7 @@
 #include <iostream>
 #include <concurrency/wait/system/wait.hpp>
 
-namespace concurrency::tp {
+namespace concurrency {
 
 // mutex + condvar -> simple
 // atomic + futex_wait (barrier) -> harder 
@@ -91,4 +91,4 @@ private:
     std::atomic<uint32_t> barrier{0};
 };
 
-}
+} // namespace concurrency

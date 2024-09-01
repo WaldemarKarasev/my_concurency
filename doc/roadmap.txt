@@ -1,5 +1,5 @@
 queue of tasks:
-0:  sleep_for or tasks/executors -> futures -> ...
+0:  tasks/executors -> ...
 1:  condvar -> semaphore -> barrier -> ...
 2:  wait_group(moving to the separate folder)
 3:  intrusiveness
@@ -60,7 +60,7 @@ queue of tasks:
 ==============================futures=============================
 - fun
     - [cond/wait_group](/tasks/cond/wait_group  - done)
-    - [futures/std](/tasks/futures/std)
+    - [futures/std](/tasks/futures/std          - done)
     - [tasks/executors](/tasks/tasks/executors)
 
 - lazy
@@ -68,7 +68,7 @@ queue of tasks:
     - [futures/fun](/tasks/futures/fun)
     - [tasks/scheduler](/tasks/tasks/scheduler) – рекомендуется
 
-- std
+- std - done
 ===================================================================
 
 

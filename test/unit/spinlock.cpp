@@ -10,7 +10,7 @@
 
 // Concurrency
 #include <concurrency/utility.hpp>
-#include <concurrency/spin_lock/spin_lock.hpp>
+#include <concurrency/sync/spin_lock.hpp>
 
 void Stress()
 {

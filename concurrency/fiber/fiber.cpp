@@ -1,24 +1,21 @@
 #include "fiber.hpp"
 
-#include <concurrency/tread_pool/thread_pool.hpp>
-#include <concurrency/fiber/coroutine.hpp>
-
 
 namespace concurrency::fiber {
 
 
 static thread_local Fiber* current_fiber = nullptr;
 
-Fiber::Fiber(Scheduler* executor, Task task)
+Fiber::Fiber(exe::IExecutor* executor, Task task)
     : coro_(std::move(task))
-    , scheduler_(executor)
+    , executor_(executor)
 {
     
 }
 
 void Fiber::Schedule()
 {
-    scheduler_->Submit(this);
+    executor_->Submit(this);
 }
 
 void Fiber::Resume()

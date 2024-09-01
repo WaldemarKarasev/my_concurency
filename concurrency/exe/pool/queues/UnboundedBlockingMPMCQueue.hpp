@@ -7,7 +7,7 @@
 #include <mutex>
 
 
-namespace concurrency::tp {
+namespace concurrency::exe::pool::queues {
 
 // Unbounded Mutli-Producer / Multi-Consumer (MPMC) Blocking Queue
 

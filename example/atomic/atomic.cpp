@@ -1,7 +1,7 @@
 
 #include <iostream>
 
-#include <concurrency/atomic/atomic.cpp>
+#include <concurrency/sync/atomic/atomic.cpp>
 #include <atomic>
 int main()
 {

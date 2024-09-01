@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.11)
 
 project(my_concurrency CXX C ASM)
 
-# include(cmake/toolchain.cmake)
+include(cmake/toolchain.cmake)
 
 include(cmake/logging.cmake)
 include(cmake/check_compiler.cmake)

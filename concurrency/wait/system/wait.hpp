@@ -5,7 +5,7 @@
 #include <chrono>
 
 // Concurrency
-#include <concurrency/atomic/atomic.hpp>
+#include <concurrency/sync/atomic/atomic.hpp>
 
 
 namespace concurrency::wait::system {

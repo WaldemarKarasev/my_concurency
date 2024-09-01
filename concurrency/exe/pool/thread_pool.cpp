@@ -2,12 +2,12 @@
 
 #include <iostream>
 
-namespace concurrency::tp {
+namespace concurrency::exe::pool {
 
 static thread_local ThreadPool* pool = nullptr;
 
 ThreadPool::ThreadPool(size_t threads)
-        : workers_count_(threads)
+    : workers_count_(threads)
 {
 }
 
@@ -96,4 +96,4 @@ void ThreadPool::WorkerRoutine(std::optional<ITask*> task)
 }
 
 
-}
+} // namespace concurrency::exe::pool

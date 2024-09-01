@@ -7,7 +7,7 @@
 #include <gtest/gtest.h>
 
 // Concurrency
-#include <concurrency/atomic/atomic.hpp>
+#include <concurrency/sync/atomic/atomic.hpp>
 
 
 TEST(Atomic, Load) {

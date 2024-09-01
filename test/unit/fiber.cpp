@@ -10,12 +10,10 @@ using namespace std::chrono_literals;
 #include <concurrency/fiber/fiber.hpp> // fiber
 #include <concurrency/fiber/go.hpp> // Go
 #include <concurrency/fiber/yield.hpp> // concurrency::fiber::Yield
-#include <concurrency/tread_pool/thread_pool.hpp> // scheduler
-
+#include <concurrency/exe/thread_pool.hpp> // underlying scheduler for IExcetutor
 #include <concurrency/utility.hpp>
 
-using ThreadPool = concurrency::tp::ThreadPool;
-
+using ThreadPool = concurrency::exe::ThreadPool;
 
 
 void AssertOn(ThreadPool& pool)

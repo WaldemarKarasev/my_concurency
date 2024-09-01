@@ -1,7 +1,7 @@
 #pragma once
 
 #include <atomic>
-#include <concurrency/atomic/atomic.hpp>
+#include <concurrency/sync/atomic/atomic.hpp>
 
 #include <concurrency/wait/system/wait.hpp>
 
@@ -52,4 +52,4 @@ private:
     std::mutex mutex_;
 };
 
-}
+} // namespace concurrency
