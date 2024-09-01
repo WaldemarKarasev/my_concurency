@@ -1,12 +1,11 @@
 #include <concurrency/exe/manual.hpp>
-#include <iostream>
+
 namespace concurrency::exe {
 
 // IExecutor
 void ManualExecutor::Submit(ITask* task)
 {
     tasks_.push_back(task);
-    std::cout << "Manul.Submit; tasks.size()=" << tasks_.size() << std::endl; 
 }
 
 
@@ -17,7 +16,6 @@ void ManualExecutor::Submit(ITask* task)
 size_t ManualExecutor::RunAtMost(size_t limit)
 {
     size_t executed = 0;
-    std::cout << "limit=" << limit << "; TaskCount()=" << TaskCount() << std::endl;
 
     if (IsEmpty()) { return 0; } // task queue is empty
 
@@ -32,7 +30,6 @@ size_t ManualExecutor::RunAtMost(size_t limit)
         
         if (task == nullptr)
         {
-            std::cout << "nullptr" << std::endl;
             continue;
         }
 

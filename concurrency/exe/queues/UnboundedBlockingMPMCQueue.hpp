@@ -7,7 +7,7 @@
 #include <mutex>
 
 
-namespace concurrency::exe::pool::queues {
+namespace concurrency::exe::queues {
 
 // Unbounded Mutli-Producer / Multi-Consumer (MPMC) Blocking Queue
 
@@ -64,4 +64,4 @@ private:
     std::atomic<bool> is_stopped_{false};
 };
 
-} // namespace concurrency::tp
+} // namespace concurrency::exe::queues

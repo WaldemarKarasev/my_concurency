@@ -4,7 +4,7 @@
 #include <thread>
 
 #include <concurrency/task/task.hpp>
-#include <concurrency/exe/pool/queues/UnboundedBlockingMPMCQueue.hpp>
+#include <concurrency/exe/queues/UnboundedBlockingMPMCQueue.hpp>
 #include <concurrency/sync/wait_group.hpp>
 #include <concurrency/exe/executor.hpp>
 

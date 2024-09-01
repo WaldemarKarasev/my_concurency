@@ -10,11 +10,11 @@ using namespace std::chrono_literals;
 #include <gtest/gtest.h>
 
 // Concurrency
-#include <concurrency/exe/pool/queues/UnboundedBlockingMPMCQueue.hpp>
+#include <concurrency/exe/queues/UnboundedBlockingMPMCQueue.hpp>
 #include <concurrency/utility.hpp>
 
 template <typename T>
-using Queue = concurrency::exe::pool::queues::UnboundedBlockingMPMCQueue<T>;
+using Queue = concurrency::exe::queues::UnboundedBlockingMPMCQueue<T>;
 
 TEST(MPMCQueue, Exchange)
 {

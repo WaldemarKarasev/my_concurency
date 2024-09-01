@@ -1,8 +1,8 @@
 queue of tasks:
-0:  tasks/executors -> ...
+0:  tasks/executors && intrusiveness -> intrusiveList -> MPSCUnboundedLockFreeQueue !!!
 1:  condvar -> semaphore -> barrier -> ...
 2:  wait_group(moving to the separate folder)
-3:  intrusiveness
+
 
 ===============================cond===============================
 - barrier
