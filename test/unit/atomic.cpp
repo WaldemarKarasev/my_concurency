@@ -42,15 +42,3 @@ int main(int argc, char *argv[])
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
 }
-
-
-/*
-
-SIMPLE_TEST(LoadStore) {
-
-  }
-
-  SIMPLE_TEST(Exchange) {
-
-  }
-*/

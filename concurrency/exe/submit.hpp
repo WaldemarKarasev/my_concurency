@@ -5,9 +5,9 @@
 namespace concurrency::exe {
 
 template <typename Exe, typename Fun>
-void Submit(Exe& pool, Fun task)
+void Submit(Exe& exe, Fun task)
 { 
-    pool.Submit(MakeRoutine(std::move(task)));
+    exe.Submit(Routine::MakeRoutine(std::move(task)));
 }
 
 } // namespace concurrency::tp

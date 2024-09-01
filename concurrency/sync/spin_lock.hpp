@@ -36,6 +36,10 @@ public:
         locked_.store(0, std::memory_order_release); // <--- Thundering Herd
     }
 
+    void try_lock()
+    {
+        // Not implemented
+    }
 
 private:
     // Atomic locked_{0};

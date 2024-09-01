@@ -1,7 +1,3 @@
-SET(TEST_LIBS 
-        concurrency " " gtest
-)
-
 message(AAAAAAAAAAAAAAAAAAAAA ${TEST_LIBS})
 add_executable(atomic atomic.cpp)
 target_link_libraries(atomic 
@@ -76,3 +72,5 @@ gtest_discover_tests(thread_pool)
 gtest_discover_tests(coroutine)
 gtest_discover_tests(fiber)
 gtest_discover_tests(stdlike_future)
+
+add_subdirectory(executors)
