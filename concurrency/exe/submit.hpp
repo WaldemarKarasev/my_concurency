@@ -5,9 +5,9 @@
 namespace concurrency::exe {
 
 template <typename Exe, typename Fun>
-void Submit(Exe& exe, Fun task)
+void Submit(Exe& exe, Fun&& fun)
 { 
-    exe.Submit(Routine::MakeRoutine(std::move(task)));
+    exe.Submit(Routine::MakeRoutine(std::forward<Fun>(fun)));
 }
 
 } // namespace concurrency::tp

@@ -7,7 +7,7 @@
 namespace concurrency::fiber {
 
 
-class Fiber : public concurrency::ITask {
+class Fiber : public concurrency::TaskBase {
 public:
 
     Fiber(exe::IExecutor* executor, Task task);

@@ -58,8 +58,10 @@ public:
 
     void Add(size_t count)
     {
+        // barrier.store(1);
         // std::cout << "Add" << std::endl;
-        counter_.fetch_add(count, std::memory_order_seq_cst);
+        // counter_.fetch_add(count, std::memory_order_seq_cst);
+        counter_.fetch_add(count);
     }
 
     void Done()
@@ -72,7 +74,7 @@ public:
         {
             auto key = concurrency::wait::system::PrepareWake(barrier);
             barrier.store(1);
-            concurrency::wait::system::WakeOne(key);            
+            concurrency::wait::system::WakeAll(key);            
         }
     }
 
@@ -80,10 +82,9 @@ public:
     {
         // std::cout << "Wait" << std::endl;
         concurrency::wait::system::Wait(barrier, 0);
-        // std::cout << barrier.load() << std::endl;
-        // std::cout << counter_.load() << std::endl;
-        // std::cout << "Wait ends" << std::endl;
-        barrier.store(0);
+        std::cout << barrier.load() << std::endl;
+        // std::cout << "Finished waiting" << std::endl;
+        // barrier.store(0);
     }
 
 private:

@@ -8,7 +8,7 @@ class IExecutor
 {
 public:
     // Submit ITasks into underlying scheduler implementation
-    virtual void Submit(ITask* task) = 0;
+    virtual void Submit(TaskBase* task) = 0;
 
 };
 

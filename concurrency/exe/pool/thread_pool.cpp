@@ -23,7 +23,7 @@ void ThreadPool::Start()
 }
 
 // Schedules task for execution in one of the worker threads
-void ThreadPool::Submit(ITask* task)
+void ThreadPool::Submit(TaskBase* task)
 {
     wg_.Add(1);
     tasks_.Put(task);
@@ -33,7 +33,6 @@ void ThreadPool::Submit(Task task)
 {
     wg_.Add(1);
     tasks_.Put(Routine::MakeRoutine(std::move(task)));
-
 }
 
 // Locates current thread pool from worker thread
@@ -83,7 +82,7 @@ void ThreadPool::StartWorkerThreads()
     }
 }
 #include <iostream>
-void ThreadPool::WorkerRoutine(std::optional<ITask*> task)
+void ThreadPool::WorkerRoutine(std::optional<TaskBase*> task)
 {
     try {
         (*task)->Run();

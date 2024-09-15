@@ -3,7 +3,7 @@
 namespace concurrency::exe {
 
 // IExecutor
-void ManualExecutor::Submit(ITask* task)
+void ManualExecutor::Submit(TaskBase* task)
 {
     tasks_.push_back(task);
 }

@@ -6,7 +6,7 @@ class InlineExecutor : public IExecutor
 {
 public:
     // IExecutor
-    virtual void Submit(ITask* task) override
+    virtual void Submit(TaskBase* task) override
     {
         task->Run();
     }

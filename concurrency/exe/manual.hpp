@@ -21,7 +21,7 @@ public:
     ManualExecutor& operator=(ManualExecutor&&) = delete;
 
     // IExecutor
-    virtual void Submit(ITask* task) override;
+    virtual void Submit(TaskBase* task) override;
 
     // Run tasks
 

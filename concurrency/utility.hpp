@@ -3,6 +3,13 @@
 #include <chrono>
 #include <iostream>
 
+
+#ifndef NDEBUG
+    #define DEBUG(msg) std::cout << #msg << std::endl
+#else 
+    #define DEBUG(msg)
+#endif
+
 namespace concurrency {
 
 class StopWatch

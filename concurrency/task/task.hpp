@@ -3,6 +3,8 @@
 #include <functional>
 
 #include <concurrency/utility.hpp>
+#include <concurrency/intrusive/forward_list.hpp>
+
 
 namespace concurrency {
 
@@ -10,10 +12,19 @@ using Task = std::function<void()>;
 
 struct ITask
 {
+    virtual ~ITask() = default;
+
     virtual void Run() noexcept = 0;
 };
 
-class Routine : public ITask
+struct TaskBase : public ITask, 
+                  public intruisve::IntrusiveForwardListNode<TaskBase>
+{
+    // No extra internals
+};
+
+
+class Routine : public TaskBase //ITask
 {
 public:
     Routine(Task task)
@@ -40,7 +51,5 @@ public:
 private:
     Task fun;
 };
-
-
 
 }

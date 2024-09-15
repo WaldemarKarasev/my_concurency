@@ -28,7 +28,7 @@ public:
     void Start();
 
     // Schedules task for execution in one of the worker threads
-    virtual void Submit(ITask* task) override;
+    virtual void Submit(TaskBase* task) override;
 
     // This function is not part of IExecutor interface. But it can be used for scheduling simple lambdas in current ThreadPool
     void Submit(Task task);
@@ -46,14 +46,15 @@ public:
 private:
     void JoinWorkers();
     void StartWorkerThreads();
-    void WorkerRoutine(std::optional<ITask*> task);
+    void WorkerRoutine(std::optional<TaskBase*> task);
 
 private:
     size_t workers_count_{0};
     std::vector<std::thread> workers_;
-    queues::UnboundedBlockingMPMCQueue<ITask*> tasks_;
-    // WaitGroup wg_;
-    WaitGroup_Futex wg_;
+    queues::UnboundedBlockingMPMCQueue<TaskBase*> tasks_;
+    WaitGroup wg_;
+    // WaitGroup_Futex wg_;
+    std::mutex mutex_;
 };
 
 } // namespace concurrency::exe::pool
