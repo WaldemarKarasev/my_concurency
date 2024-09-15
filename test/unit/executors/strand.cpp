@@ -189,7 +189,6 @@ TEST(Strand, ConcurrentSubmits) {
     workers.Stop();
     clients.Stop();
 }
-#if 0
 TEST(Strand, StrandOverManual) {
     ManualExecutor manual;
     Strand strand{manual};
@@ -308,6 +307,7 @@ TEST(Strand, NonBlockingSubmit) {
     pool.WaitIdle();
     pool.Stop();
 }
+#if 0
 #endif
 
 
