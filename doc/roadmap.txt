@@ -1,7 +1,7 @@
-queue of tasks:
-0:  tasks/executors && intrusiveness -> intrusiveList -> MPSCUnboundedLockFreeQueue !!!
-1:  condvar -> semaphore -> barrier -> ...
-2:  wait_group(moving to the separate folder)
+Tasks:
+0:  futures/fun -> cond/condvar && tasks/mutex/queue -> fibers/mutex -> ...
+1:  wait_group - thread_sanitizer
+2:  semaphore -> barrier -> ...
 
 
 ===============================cond===============================
@@ -17,7 +17,7 @@ queue of tasks:
 
 ===============================coro===============================
 - gorroutines
-    - [tasks/executors](/tasks/tasks/executors)
+    - [tasks/executors](/tasks/tasks/executors - done)
     - [fibers/mutex](/tasks/fibers/mutex) – рекомендуется
     - [tasks/scheduler](/tasks/tasks/scheduler) или интрузивные задачи – рекомендуется
 
@@ -35,20 +35,20 @@ queue of tasks:
 - chan
     - [mutex/dining](/tasks/mutex/dining    - done)
     - [fibers/mutex](/tasks/fibers/mutex)
-    - [tasks/executors](/tasks/tasks/executors)
+    - [tasks/executors](/tasks/tasks/executors - done)
     - [tasks/scheduler](/tasks/fibers/scheduler)
 
 - coroutine - done
 
 - mutex
     - [fibers/yield](/tasks/fibers/coroutine    - done)
-    - [fibers/sleep_for](/tasks/fibers/sleep_for)
+    - [fibers/sleep_for](/tasks/fibers/sleep_for - TODO: with await)
     - [cond/condvar](/tasks/cond/condvar)
     - [cond/wait_group](/tasks/cond/wait_group - done)
     - [mutex/queue](/tasks/mutex/queue)
-    - [tasks/executors](/tasks/tasks/executors) + интрузивность – рекомендуется
+    - [tasks/executors](/tasks/tasks/executors - done) + интрузивность – рекомендуется
 
-- sleep_for
+- sleep_for - TODO: await impl
     - [fibers/yield](/tasks/fibers/yield    - done)
 
 - yield - done
@@ -57,15 +57,17 @@ queue of tasks:
 
 ==================================================================
 
+
+
 ==============================futures=============================
 - fun
     - [cond/wait_group](/tasks/cond/wait_group  - done)
     - [futures/std](/tasks/futures/std          - done)
-    - [tasks/executors](/tasks/tasks/executors)
+    - [tasks/executors](/tasks/tasks/executors  - done)
 
 - lazy
-    - [tasks/executors](/tasks/tasks/executors) + интрузивные задачи
-    - [futures/fun](/tasks/futures/fun)
+    - [tasks/executors](/tasks/tasks/executors  - done) + интрузивные задачи
+    - [futures/fun](/tasks/futures/fun          - done)
     - [tasks/scheduler](/tasks/tasks/scheduler) – рекомендуется
 
 - std - done
@@ -76,7 +78,7 @@ queue of tasks:
 
 
 =============================task=================================
-- executors
+- executors - done
     - [tasks/thread-pool](/tasks/tasks/thread-pool - done)
     - [fibers/yield](/tasks/fibers/yield           - done)
 
@@ -84,7 +86,7 @@ queue of tasks:
 - scheduler
     - [cond/wait_group](/tasks/cond/wait_group  - done)
     - [fibers/mutex](/tasks/fibers/mutex)
-    - [tasks/executors](/tasks/tasks/executors)
+    - [tasks/executors](/tasks/tasks/executors  - done)
     - [lockfree/steal](/tasks/lockfree/steal)
     - [fibers/chan](/tasks/fibers/chan) – рекомендуется
 
