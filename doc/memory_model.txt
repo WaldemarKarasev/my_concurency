@@ -12,9 +12,10 @@ Synchronuzation-Order   - ...
 
 
 Read
-1. Memory Bariers
-2. Russ Cox
+1. Memory Bariers: a Hardware View for Software Hackers
+2. Memory Models: A Case For Rethinking Parallel Languages and Hardware
 3. Java MM
-4. Linux kerner MM
-5. The Problem of Programming Languages Concurrency Semantics
-6. C++ MM // consume ??? bad MM
+4. Russ Cox - Memory Models
+5. Linux kerner MM
+6. The Problem of Programming Languages Concurrency Semantics
+7. C++ MM // consume ??? bad MM
